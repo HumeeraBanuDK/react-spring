@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
-    @Value("${FRONTEND_ORIGIN:http://localhost:5173}") // Inject frontend origin from env or default
+    @Value("${FRONTEND_ORIGIN:http://localhost:5175}") // Inject frontend origin from env or default
     private String frontendOrigin;
 
     @Bean
@@ -27,4 +27,5 @@ public class CorsConfig {
         };
     }
 }
+
 
