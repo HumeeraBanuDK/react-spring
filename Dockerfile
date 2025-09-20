@@ -1,13 +1,5 @@
-# Build step
-FROM node:18 AS build
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Serve step
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY target/*.jar app.jar
+EXPOSE 8080
+CMD ["sh", "-c", "java -Dserver.port=$PORT -jar app.jar"]
